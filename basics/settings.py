@@ -126,3 +126,13 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = 'login'   # ✅ not '/login.html'
+
+
+# Email backend for real emails (Gmail SMTP)
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "surajabpatil2002@gmail.com"        # replace with your Gmail
+EMAIL_HOST_PASSWORD = "lqcsjrsfhxwsmikh"      # generate App Password (not normal Gmail password)
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
