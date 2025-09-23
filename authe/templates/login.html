@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  
+  <div class="container">
+    <div class="col-sm-6">
+        <h2 class="text-muted">Login</h2>
+        <form method="POST" action={% url 'login' %}>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for={{ form.username.id_for_label }}>Username:</label>
+                <input type="text" name={{ form.username.name }} class="form-control" maxlength="150" placeholder = "Username" required>
+                <span class="text-danger">{{ form.username.errors }}</span>
+            </div>
+            <div class="form-group">
+                <label for={{ form.password.id_for_label }}>Password:</label>
+                <input type="password" name={{ form.password.name }} class="form-control" maxlength="150" placeholder = "Password" required>
+                <span class="text-danger">{{ form.password.errors }}</span>
+            </div>
+
+            <div class= "form-group"><button type = "submit" class="btn btn-default">Login</button><br></div>
+            <div class="form-group">
+                <a href="{% url 'signup' %}">Don't have an account?</a>
+            </div>
+        </form>
+    </div>
+  </div>
+
+  <style>
+    .container{
+        display: flex;
+        justify-content: center; /* horizontal */
+        height: 100vh;       
+    }
+
+  </style>
+{% endblock %}
