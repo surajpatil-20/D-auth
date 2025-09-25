@@ -116,3 +116,4 @@ def logout_view(request):
         return redirect('login')
     else:
         return redirect('home')
+
