@@ -13,19 +13,45 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.tokens import default_token_generator as token_generator
 from django.core.mail import send_mail
 from .models import CustomUserCreationForm
+from .tokens import token_generator
+
 
 # Create your views here.
 
+# def login_view(request):
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request,data = request.POST)
+#         if form.is_valid():
+#             user = form.get_user()
+#             login(request, user)
+#             return redirect("home")
+#     else:
+#         form = AuthenticationForm()
+#     return render(request, 'login.html',{'form':form})
+
 def login_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request,data = request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect("home")
+        form = AuthenticationForm(request, data=request.POST)
+        username_or_email = request.POST.get("username")
+        password = request.POST.get("password")
+        try:
+            if '@' in username_or_email :
+                user_obj = User.objects.filter(email=username_or_email).first()
+                username = user_obj.username if user_obj else username_or_email
+            else:
+                username= username_or_email
+        except User.DoesNotExist:
+            username = username_or_email
+
+        user = authenticate(username=username,password=password)
+        if user:
+            login(request,user)
+            return redirect('home')
     else:
         form = AuthenticationForm()
-    return render(request, 'login.html',{'form':form})
+    return render(request,'login.html', {'form':form})
+
+
 
 
 def signup_view(request):
