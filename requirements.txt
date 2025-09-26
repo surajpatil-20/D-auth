@@ -1,0 +1,10 @@
+Django==5.2.6
+asgiref==3.9.1
+sqlparse==0.5.3
+pytz==2025.2
+tzdata==2025.2
+python-dotenv==1.1.0
+requests==2.32.3
+Pillow==11.2.1    # if you handle images (e.g., user uploads)
+psycopg2-binary==2.9.10   # if using PostgreSQL
+djangorestframework==3.15.0  # if building APIs
