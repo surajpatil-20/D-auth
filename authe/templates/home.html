@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
- <div class="center">
+ <div class="center_1">
     <div class="form-group"><h1>Welcome {{ user.first_name }} {{ user.last_name }} ! This is your Dashboard</h1></div>
     <form method='POST' action="{% url 'logout' %}">
         {% csrf_token %}
@@ -12,11 +12,10 @@
  </div>
 
  <style>
-    .center{
+    .center_1{
         display: flex;
         justify-content: center; /* horizontal */
         height: 100vh;       
-        flex-direction: column;
     }
     </style>
 
