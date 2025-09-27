@@ -1,17 +1,23 @@
 {
-    "builds": [
-        {
-            "src": "basics/wsgi.py",
-            "use": "@vercel/python",
-            "config": { "maxLambdaSize": "15mb", "runtime": "python3.12.4" }
-        }
-    ],
-    "routes": [
-        {
-             "src": "/(.*)",
-         "dest": "basics/wsgi.py"
-        }
-    ]
-
-
+  "builds": [
+    {
+      "src": "basics/wsgi.py",
+      "use": "@vercel/python",
+      "config": { 
+        "maxLambdaSize": "15mb", 
+        "runtime": "python3.12.4" 
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "basics/wsgi.py"
+    }
+  ],
+  "buildCommand": "pip install -r requirements.txt && python manage.py migrate --noinput && python manage.py collectstatic --noinput"
 }
