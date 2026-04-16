@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-f2c+zh*4da_)^n%x+vzxuqzscv3b@^1^q*dl)11pk9-(y*8!)w"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['d-auth-delta.vercel.app','.vercel.app','127.0.0.1','localhost',]
 
@@ -79,12 +79,8 @@ WSGI_APPLICATION = "basics.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "railway",
-        "USER":"postgres",
-        "PASSWORD":"VRPUpLCpRSCridyPDKnSsndqfbTTewML",
-        "HOST":"centerbeam.proxy.rlwy.net",
-        "PORT":"31757",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
