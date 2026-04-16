@@ -77,7 +77,7 @@ def signup_view(request):
                 from_email="surajabpatil2002@gmail.com",
                 recipient_list=[user.email],
             )
-            messages.success(request, "Account created successfully! Please check your email to verify your account.")
+            messages.success(request, "If the email exists, the verification mail will be sent to your registered email.")
 
             return redirect("login")
     else :
