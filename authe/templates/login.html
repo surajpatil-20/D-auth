@@ -26,7 +26,12 @@
         </div>
         <div class="mb-3">
           <label for="{{ form.password.id_for_label }}" class="form-label">Password:</label>
-          <input type="password" name="{{ form.password.name }}" class="form-control" maxlength="150" placeholder="Password" required>
+          <div class="password-container">
+            <input type="password" name="{{ form.password.name }}" class="form-control" maxlength="150" placeholder="Password" required id="login-password">
+            <button type="button" class="password-toggle" onclick="togglePassword('login-password', 'login-eye-icon')" aria-label="Toggle password visibility">
+              <i class="bi bi-eye" id="login-eye-icon"></i>
+            </button>
+          </div>
           <div class="text-danger">{{ form.password.errors }}</div>
         </div>
         <div class="d-grid mb-3">
